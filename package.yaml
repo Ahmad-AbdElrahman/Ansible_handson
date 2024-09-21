@@ -1,0 +1,10 @@
+---
+- name: First play
+  hosts: localhost
+  become: true
+  connection: local
+  tasks:
+    - name: Install package
+      ansible.builtin.yum:
+        name: vim-enhanced
+        state: present

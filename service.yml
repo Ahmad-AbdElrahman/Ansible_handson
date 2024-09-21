@@ -1,0 +1,14 @@
+---
+- name: First play
+  hosts: all
+  become: true
+  tasks:
+    - name: Install package
+      ansible.builtin.yum:
+        name: vsftpd
+        state: present
+
+    - name: Start service
+      ansible.builtin.service:
+        name: vsftpd
+        state: started

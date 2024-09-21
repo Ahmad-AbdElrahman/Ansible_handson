@@ -1,0 +1,13 @@
+---
+- name: First play
+  hosts: node01
+  become: true
+  tasks:
+    - name: Creating file
+      ansible.builtin.file:
+        path: /opt/file.txt
+        state: touch
+    - name: Populate the file
+      ansible.builtin.copy:
+        content: "This file is created by Ansible!"
+        dest: /opt/file.txt

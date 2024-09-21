@@ -1,0 +1,20 @@
+---
+- name: First play
+  hosts: 
+    - node01
+    - node02
+  become: true
+  tasks:
+    - name: Replace name
+      ansible.builtin.replace:
+        path: /opt/music/blog.txt
+        regexp: "Kodekloud"
+        replace: "Ansible"
+      when: ansible_host == "node01"
+
+    - name: Replace name2
+      ansible.builtin.replace:
+        path: /opt/music/story.txt
+        regexp: "Ansible"
+        replace: "Kodekloud"
+      when: ansible_host == "node02"

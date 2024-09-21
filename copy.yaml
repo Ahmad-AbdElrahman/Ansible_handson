@@ -1,0 +1,12 @@
+---
+- name: First play
+  hosts: 
+    - node01
+    - node02
+  become: true
+  tasks:
+    - name: Copy file
+      ansible.builtin.copy:
+        src: /usr/src/blog/index.html
+        dest: /opt/blog
+        remote_src: yes

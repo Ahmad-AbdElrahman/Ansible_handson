@@ -1,0 +1,9 @@
+---
+- name: First play
+  hosts: all
+  become: true
+  tasks:
+    - name: Archive Directory
+      ansible.builtin.archive:
+        path: /usr/src/ecommerce/
+        dest: /opt/ecommerce/demo.tar.gz

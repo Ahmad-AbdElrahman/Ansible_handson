@@ -1,0 +1,7 @@
+---
+- name: First play
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Dispaly the content
+      command: cat /etc/resolv.conf

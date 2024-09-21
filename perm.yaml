@@ -1,0 +1,18 @@
+---
+- name First play
+  hosts all
+  become true
+  tasks
+    - name Creating file
+      ansible.builtin.file
+        path optnewsblog.txt
+        state touch
+        group sam
+      when ansible_host == node01
+
+    - name Creating file node02
+      ansible.builtin.file
+        path optnewsstory.txt
+        state touch
+        owner sam
+      when ansible_host == node02

@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Copy file
+      ansible.builtin.copy:
+        src: /usr/src/condition/blog.txt
+        dest: /opt/condition
+        owner: bob
+        group: bob
+        mode: "0640"
+      when: ansible_host == 'node01'
+
+    - name: Copy file node2
+      ansible.builtin.copy:
+        src: /usr/src/condition/story.txt
+        dest: /opt/condition
+        owner: sam
+        group: sam
+        mode: "0400"
+      when: ansible_host == 'node02'
+                            

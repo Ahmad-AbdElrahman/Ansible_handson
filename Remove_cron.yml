@@ -1,0 +1,9 @@
+---
+- name: Cron job
+  hosts: node00
+  become: yes
+  tasks:
+    - name: Remove task
+      cron:
+        name: "Free Memory Check"
+        state: absent

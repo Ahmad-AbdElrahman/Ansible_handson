@@ -1,0 +1,9 @@
+---
+- name: Unarchive play
+  hosts: web1
+  become: yes
+  tasks:
+    - name: Unarchive files
+      unarchive:
+        src: local.zip
+        dest: /tmp

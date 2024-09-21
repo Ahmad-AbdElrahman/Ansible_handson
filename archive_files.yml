@@ -1,0 +1,13 @@
+---
+- name: Archive Files play
+  hosts: all
+  become: true
+  tasks:
+    - name: Archive Files
+      archive:
+        path:
+          - /root/file1.txt
+          - /usr/local/share/file2.txt
+          - /var/log/lastlog
+        dest: /root/files.tar.bz2
+        format: bz2

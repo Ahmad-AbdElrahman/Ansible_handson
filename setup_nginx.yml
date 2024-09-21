@@ -1,0 +1,23 @@
+---
+- name: Setup Nginx play
+  hosts: all
+  become: true
+  tasks:
+    - name: Setup Nginx
+      yum:
+        name: nginx
+        state: present
+    - name: Starting Service
+      service:
+        name: nginx
+        state: started
+    - name: Unarchive nginx.zip
+      unarchive:
+        src: /root/nginx.zip
+        remote_src: yes
+        dest: /usr/share/nginx/html
+    - name: Replacing index.html
+      replace: 
+        path: /usr/share/nginx/html/index.html
+        regexp: 'This is sample html code'
+        replace: 'This is KodeKloud Ansible lab'

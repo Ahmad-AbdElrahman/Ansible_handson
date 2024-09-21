@@ -1,0 +1,10 @@
+---
+- name: File play
+  hosts: web1
+  become: yes
+  tasks:
+    - name: Creating file
+      lineinfile:
+        path: /var/www/html/index.html
+        line: 'This line was added using Ansible lineinfile module!'
+        create: yes

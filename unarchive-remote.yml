@@ -1,0 +1,17 @@
+---
+- name: Unarchive play
+  hosts: web1
+  become: yes
+  tasks:
+    - name: UnArchive files
+      unarchive:
+        src: /root/data.tar.gz
+        remote_src: yes
+        dest: /srv
+      notify: delete archive
+   
+  handlers:
+    - name: delete archive
+      file:
+        path: /root/data.tar.gz
+        state: absent

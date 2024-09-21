@@ -1,0 +1,13 @@
+---
+- name: Block in file play
+  hosts: web1
+  tasks:
+    - name: Adding multi line in files
+      blockinfile:
+        owner: apache
+        group: apache
+        insertbefore: BOF
+        path: /var/www/html/index.html
+        block: |
+         Welcome to KodeKloud!
+         This is Ansible Lab.

@@ -1,0 +1,9 @@
+---
+- name: Create a cron job to cleanup
+  hosts: node00
+  tasks:
+   - name: Cleanup
+     cron:
+       name: "cleanup"
+       special_time: reboot
+       job: rm -rf /tmp/*

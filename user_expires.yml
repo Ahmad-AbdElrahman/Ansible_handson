@@ -1,0 +1,10 @@
+---
+- name: Create a user
+  hosts: all
+  become: yes
+  tasks:
+   - name: Creating user
+     user:
+       name: neymarsabin
+       expires: 1704067199
+       state: present

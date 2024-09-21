@@ -1,0 +1,14 @@
+---
+- name: Create a user
+  hosts: all
+  become: yes
+  tasks:
+   - name: Creating group
+     group:
+       name: admin
+   - name: Creating user
+     user:
+       name: admin
+       group: admin
+       uid: 2048
+       state: present

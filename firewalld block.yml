@@ -1,0 +1,12 @@
+---
+- name: Firewlld play
+  hosts: web1
+  become: yes
+  tasks: 
+    - name: Firewlld blacklist
+      firewalld:
+        port: 161/udp
+        state: enabled
+        zone: block
+        permanent: yes
+        immediate: yes

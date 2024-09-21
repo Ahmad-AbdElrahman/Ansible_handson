@@ -1,0 +1,12 @@
+export ANSIBLE_GATHERING=explicit
+ansible -i ~/playbooks/inventory -a 'uptime' all
+cat <<EOF > ~/playbooks/playbook.yml
+---
+- name: Play from bash
+  hosts: all
+  become: true
+  tasks:
+    - name: Cat /etc/redhat-release
+      command: 'cat /etc/redhat-release'
+EOF
+ansible-playbook -i ~/playbooks/inventory ~/playbooks/playbook.yml -vv

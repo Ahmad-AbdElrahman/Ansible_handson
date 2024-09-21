@@ -1,0 +1,9 @@
+---
+- name: Installing wget
+  hosts: web1
+  become: yes
+  tasks:
+    - name: Installing wget
+      ansible.builtin.yum:
+        name: http://mirror.centos.org/centos/7/os/x86_64/Packages/
+        state: present
